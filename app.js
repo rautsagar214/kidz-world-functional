@@ -139,4 +139,18 @@ cartButton.onclick = () => {
   console.log(
     "The total amount is " + finalDollars + "$ and " + finalCents + " cents"
   );
+  updateWhatsappLink()
+  window.open(whatsappLink,"_blank")
 };
+
+var whatsappLink = "https://api.whatsapp.com/send?phone=919000000000&text=Order%20details";
+
+function updateWhatsappLink(){
+    for(let i=0;i<items.length;i++){
+        if(items[i].quantity!=0){
+            whatsappLink+="%0A"+items[i].name + "%0A" + items[i].quantity;
+        }
+    }
+
+    whatsappLink+="%0A"+"Total%0Aprice" + finalDollars + "%0A"+finalCents;
+}
